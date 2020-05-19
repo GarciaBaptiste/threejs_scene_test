@@ -4,23 +4,35 @@
         "version" : "2.0"
     },
     "extensionsUsed" : [
-        "KHR_lights_punctual"
+        "KHR_lights_punctual",
+        "KHR_materials_unlit"
     ],
     "extensionsRequired" : [
-        "KHR_lights_punctual"
+        "KHR_lights_punctual",
+        "KHR_materials_unlit"
     ],
     "extensions" : {
         "KHR_lights_punctual" : {
             "lights" : [
                 {
                     "color" : [
-                        1,
+                        0.31082087755203247,
                         1,
                         1
                     ],
                     "intensity" : 1,
                     "type" : "point",
                     "name" : "Point.001"
+                },
+                {
+                    "color" : [
+                        1,
+                        0.6772924661636353,
+                        0.366542786359787
+                    ],
+                    "intensity" : 1,
+                    "type" : "point",
+                    "name" : "Point.002"
                 }
             ]
         }
@@ -33,7 +45,10 @@
                 0,
                 1,
                 2,
-                4
+                4,
+                6,
+                7,
+                8
             ]
         }
     ],
@@ -90,9 +105,62 @@
             ],
             "name" : "Point",
             "translation" : [
-                -4.586211204528809,
+                -5.895029544830322,
                 2.557391405105591,
-                -5.050914287567139
+                -3.1749415397644043
+            ]
+        },
+        {
+            "extensions" : {
+                "KHR_lights_punctual" : {
+                    "light" : 1
+                }
+            },
+            "name" : "Point.001_Orientation",
+            "rotation" : [
+                -0.7071067690849304,
+                0,
+                0,
+                0.7071067690849304
+            ]
+        },
+        {
+            "children" : [
+                5
+            ],
+            "name" : "Point.001",
+            "translation" : [
+                -5.807775020599365,
+                2.557391405105591,
+                2.4529778957366943
+            ]
+        },
+        {
+            "mesh" : 3,
+            "name" : "Icosphere.001",
+            "scale" : [
+                0.10000002384185791,
+                0.10000002384185791,
+                0.10000002384185791
+            ],
+            "translation" : [
+                -5.895029544830322,
+                2.557391405105591,
+                -3.1749415397644043
+            ]
+        },
+        {
+            "mesh" : 4,
+            "name" : "Icosphere.002",
+            "scale" : [
+                0.10000002384185791,
+                0.10000002384185791,
+                0.10000002384185791
+            ],
+            "translation" : [
+                -5.807775020599365,
+                2.557391405105591,
+                2.4529778957366943
             ]
         }
     ],
@@ -138,6 +206,21 @@
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5
             }
+        },
+        {
+            "doubleSided" : true,
+            "extensions" : {
+                "KHR_materials_unlit" : {}
+            },
+            "name" : "Material.005",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
         }
     ],
     "meshes" : [
@@ -180,6 +263,34 @@
                     },
                     "indices" : 3,
                     "material" : 2
+                }
+            ]
+        },
+        {
+            "name" : "Icosphere.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 11,
+                        "NORMAL" : 12,
+                        "TEXCOORD_0" : 13
+                    },
+                    "indices" : 14,
+                    "material" : 3
+                }
+            ]
+        },
+        {
+            "name" : "Icosphere.003",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 15,
+                        "NORMAL" : 16,
+                        "TEXCOORD_0" : 17
+                    },
+                    "indices" : 14,
+                    "material" : 3
                 }
             ]
         }
@@ -280,6 +391,68 @@
             "componentType" : 5126,
             "count" : 4,
             "type" : "VEC2"
+        },
+        {
+            "bufferView" : 11,
+            "componentType" : 5126,
+            "count" : 60,
+            "max" : [
+                0.8944249749183655,
+                1,
+                0.8506399989128113
+            ],
+            "min" : [
+                -0.8944249749183655,
+                -1,
+                -0.8506399989128113
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 12,
+            "componentType" : 5126,
+            "count" : 60,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 13,
+            "componentType" : 5126,
+            "count" : 60,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 14,
+            "componentType" : 5123,
+            "count" : 60,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 15,
+            "componentType" : 5126,
+            "count" : 60,
+            "max" : [
+                0.8944249749183655,
+                1,
+                0.8506399989128113
+            ],
+            "min" : [
+                -0.8944249749183655,
+                -1,
+                -0.8506399989128113
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 16,
+            "componentType" : 5126,
+            "count" : 60,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 17,
+            "componentType" : 5126,
+            "count" : 60,
+            "type" : "VEC2"
         }
     ],
     "bufferViews" : [
@@ -337,11 +510,46 @@
             "buffer" : 0,
             "byteLength" : 32,
             "byteOffset" : 8396
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 720,
+            "byteOffset" : 8428
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 720,
+            "byteOffset" : 9148
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 480,
+            "byteOffset" : 9868
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 120,
+            "byteOffset" : 10348
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 720,
+            "byteOffset" : 10468
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 720,
+            "byteOffset" : 11188
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 480,
+            "byteOffset" : 11908
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 8428,
+            "byteLength" : 12388,
             "uri" : "scene_sphere.bin"
         }
     ]
