@@ -31,40 +31,6 @@ function setScene() {
   hlight = new THREE.AmbientLight(0xffffff, .75);
   scene.add(hlight);
 
-  let lightPos = [2, 3, 5];
-  let light2Pos = [-2, 3, 5];
-
-  let geometry = new THREE.SphereGeometry(0.1);
-  let material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  let sphere = new THREE.Mesh(geometry, material);
-  sphere.position.set(lightPos[0], lightPos[1], lightPos[2]);
-  scene.add(sphere);
-  let sphere2 = new THREE.Mesh(geometry, material);
-  sphere2.position.set(light2Pos[0], light2Pos[1], light2Pos[2]);
-  scene.add(sphere2);
-
-  let light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(lightPos[0], lightPos[1], lightPos[2]);
-  light.castShadow = true;
-  scene.add(light);
-
-  light.shadow.mapSize.width = 1024;
-  light.shadow.mapSize.height = 1024;
-  light.shadow.camera.near = 0.5;
-  light.shadow.camera.far = 500;
-  light.shadow.bias = -0.005;
-
-  let light2 = new THREE.PointLight(0xffffff, 1, 100);
-  light2.position.set(light2Pos[0], light2Pos[1], light2Pos[2]);
-  light2.castShadow = true;
-  scene.add(light2);
-
-  light2.shadow.mapSize.width = 1024;
-  light2.shadow.mapSize.height = 1024;
-  light2.shadow.camera.near = 0.5;
-  light2.shadow.camera.far = 500;
-  light2.shadow.bias = -0.005;
-
   scene.background = new THREE.CubeTextureLoader()
     .setPath('models/')
     .load([
@@ -91,6 +57,13 @@ function renderObjects(sceneName) {
         if (node.isMesh) {
           node.castShadow = true;
           node.receiveShadow = true;
+        } else if (node.isLight) {
+          node.castShadow = true;
+          node.shadow.mapSize.width = 1024;
+          node.shadow.mapSize.height = 1024;
+          node.shadow.camera.near = 0.5;
+          node.shadow.camera.far = 500;
+          node.shadow.bias = -0.005;
         }
       })
       scene.add(gltf.scene);
