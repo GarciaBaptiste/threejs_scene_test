@@ -9,14 +9,6 @@ body {
   font-family: sans-serif;
 }
 
-article {
-  position: fixed;
-  line-height: 135%;
-  color: blue;
-  padding: 20px;
-  z-index: 10000;
-}
-
 #context {
   width: 100vw;
   height: 100vh;
