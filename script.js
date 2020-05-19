@@ -31,7 +31,7 @@ function setScene() {
   hlight = new THREE.AmbientLight(0xffffff, .75);
   scene.add(hlight);
 
-  let lightPos = [5, 5, 2];
+  let lightPos = [3, 3, 3];
 
   let geometry = new THREE.SphereGeometry(0.1);
   let material = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -39,7 +39,7 @@ function setScene() {
   sphere.position.set(lightPos[0], lightPos[1], lightPos[2]);
   scene.add(sphere);
 
-  let light = new THREE.PointLight(0xff0000, 1, 100);
+  let light = new THREE.PointLight(0xffffff, 1, 100);
   light.position.set(lightPos[0], lightPos[1], lightPos[2]);
   scene.add(light);
 
