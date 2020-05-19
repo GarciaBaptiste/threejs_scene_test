@@ -81,14 +81,16 @@
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Material.001",
+            "name" : "Material.004",
             "pbrMetallicRoughness" : {
-                "baseColorTexture" : {
-                    "index" : 0,
-                    "texCoord" : 0
-                },
+                "baseColorFactor" : [
+                    0.4064438045024872,
+                    0.4064438045024872,
+                    0.4064438045024872,
+                    1
+                ],
                 "metallicFactor" : 0,
-                "roughnessFactor" : 0.5
+                "roughnessFactor" : 1
             }
         },
         {
@@ -162,18 +164,6 @@
                     "material" : 2
                 }
             ]
-        }
-    ],
-    "textures" : [
-        {
-            "source" : 0
-        }
-    ],
-    "images" : [
-        {
-            "mimeType" : "image/jpeg",
-            "name" : "UV_Grid_Sm",
-            "uri" : "UV_Grid_Sm.jpg"
         }
     ],
     "accessors" : [
