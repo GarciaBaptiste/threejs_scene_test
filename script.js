@@ -28,9 +28,20 @@ function setScene() {
   camera.rotation.y = -.75;
   camera.rotation.x = -.5;
 
-
   hlight = new THREE.AmbientLight(0xffffff, .75);
   scene.add(hlight);
+
+  let lightPos = [5, 5, 2];
+
+  let geometry = new THREE.SphereGeometry(0.1);
+  let material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  let sphere = new THREE.Mesh(geometry, material);
+  sphere.position.set(lightPos[0], lightPos[1], lightPos[2]);
+  scene.add(sphere);
+
+  let light = new THREE.PointLight(0xff0000, 1, 100);
+  light.position.set(lightPos[0], lightPos[1], lightPos[2]);
+  scene.add(light);
 
   scene.background = new THREE.CubeTextureLoader()
     .setPath('models/')
