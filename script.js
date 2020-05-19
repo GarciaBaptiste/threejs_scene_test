@@ -9,7 +9,7 @@ let forwardSpeed = 0,
 function init() {
   context = document.getElementById('context');
   setScene();
-  renderObjects("scene_sphere"); /////////////////////////////////////////   CHANGER NOM DE FICHIER ICI   ////
+  renderObjects("scene_sphere_02"); /////////////////////////////////////////   CHANGER NOM DE FICHIER ICI   ////
   window.addEventListener('resize', windowResized);
   window.addEventListener('mousemove', mouseMoved);
   window.addEventListener('keydown', keyDowned);
