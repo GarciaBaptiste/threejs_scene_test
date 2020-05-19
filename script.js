@@ -44,8 +44,8 @@ function setScene() {
   light.castShadow = true;
   scene.add(light);
 
-  light.shadow.mapSize.width = 256;
-  light.shadow.mapSize.height = 256;
+  light.shadow.mapSize.width = 1024;
+  light.shadow.mapSize.height = 1024;
   light.shadow.camera.near = 0.5;
   light.shadow.camera.far = 500;
   light.shadow.bias = -0.005;
