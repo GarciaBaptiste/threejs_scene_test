@@ -41,7 +41,14 @@ function setScene() {
 
   let light = new THREE.PointLight(0xffffff, 1, 100);
   light.position.set(lightPos[0], lightPos[1], lightPos[2]);
+  light.castShadow = true;
   scene.add(light);
+
+  light.shadow.mapSize.width = 256;
+  light.shadow.mapSize.height = 256;
+  light.shadow.camera.near = 0.5;
+  light.shadow.camera.far = 500;
+  light.shadow.bias = -0.005;
 
   scene.background = new THREE.CubeTextureLoader()
     .setPath('models/')
@@ -55,6 +62,8 @@ function setScene() {
     ]);
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   context.appendChild(renderer.domElement);
   setSceneSize();
 }
@@ -63,6 +72,12 @@ function renderObjects(sceneName) {
   let loader = new THREE.GLTFLoader();
   loader.load('models/' + sceneName + '.gltf',
     function(gltf) {
+      gltf.scene.traverse(function(node) {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+        }
+      })
       scene.add(gltf.scene);
       animate();
     },
