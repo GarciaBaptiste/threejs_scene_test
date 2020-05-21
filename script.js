@@ -5,6 +5,8 @@ let model;
 let context;
 let forwardSpeed = 0,
   straffSpeed = 0;
+let sphere;
+let distanceFromCenter;
 
 function init() {
   context = document.getElementById('context');
@@ -57,6 +59,9 @@ function renderObjects(sceneName) {
         if (node.isMesh) {
           node.castShadow = true;
           node.receiveShadow = true;
+          if (node.name === "Icosphere") {
+            sphere = node;
+          }
         } else if (node.isLight) {
           node.castShadow = true;
           node.shadow.mapSize.width = 1024;
@@ -81,6 +86,8 @@ function animate() {
   moveCamera();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+  distanceFromCenter = (Math.abs(camera.position.x) + Math.abs(camera.position.z)) / 2;
+  sphere.position.y = 4 - distanceFromCenter / 2;
 }
 
 function setSceneSize() {
