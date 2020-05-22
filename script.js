@@ -10,6 +10,8 @@ let distanceFromCenter;
 
 function init() {
   context = document.getElementById('context');
+  context.addEventListener('click', lockMouse);
+  lockMouse();
   setScene();
   renderObjects("scene_sphere"); /////////////////////////////////////////   CHANGER NOM DE FICHIER ICI   ////
   window.addEventListener('resize', windowResized);
@@ -128,4 +130,12 @@ function keyUpped(evt) {
 function moveCamera() {
   camera.position.x = (camera.position.x) + (Math.cos(camera.rotation.y) * straffSpeed) - (Math.sin(camera.rotation.y) * forwardSpeed);
   camera.position.z = (camera.position.z) + (-Math.sin(camera.rotation.y) * straffSpeed) - (Math.cos(camera.rotation.y) * forwardSpeed);
+}
+
+function lockMouse() {
+  context.requestPointerLock = context.requestPointerLock ||
+    context.mozRequestPointerLock ||
+    context.webkitPointerLockElement;
+
+  context.requestPointerLock()
 }
