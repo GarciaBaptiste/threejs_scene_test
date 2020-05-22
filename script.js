@@ -29,8 +29,8 @@ function setScene() {
   camera.position.x = -1.5;
   camera.position.y = 1;
   camera.position.z = 1.5;
-  camera.rotation.y = -.75;
-  camera.rotation.x = -.5;
+  camera.rotation.y = .2;
+  camera.rotation.x = .2;
 
   hlight = new THREE.AmbientLight(0xffffff, .75);
   scene.add(hlight);
@@ -104,7 +104,10 @@ function windowResized() {
 
 function mouseMoved(evt) {
   camera.rotation.y -= evt.movementX / 100;
-  camera.rotation.x -= evt.movementY / 100;
+  let nextCameraRotationX = camera.rotation.x - evt.movementY / 100;
+  if (nextCameraRotationX <= 1.7 && nextCameraRotationX >= -1.7) {
+    camera.rotation.x = nextCameraRotationX;
+  }
 }
 
 function keyDowned(evt) {
