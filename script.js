@@ -1,12 +1,10 @@
 window.addEventListener('load', init);
 
-let scene, camera, cameraEmpty, renderer, composer, renderPass;
+let scene, camera, renderer;
 let model;
 let context;
 let forwardSpeed = 0,
   straffSpeed = 0;
-let sphere;
-let distanceFromCenter;
 
 function init() {
   context = document.getElementById('context');
@@ -27,7 +25,7 @@ function setScene() {
   camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, .1, 5000);
   camera.rotation.order = "YXZ";
   camera.position.x = -1.5;
-  camera.position.y = 1;
+  camera.position.y = 1.7;
   camera.position.z = 1.5;
   camera.rotation.y = .2;
   camera.rotation.x = .2;
@@ -61,9 +59,6 @@ function renderObjects(sceneName) {
         if (node.isMesh) {
           node.castShadow = true;
           node.receiveShadow = true;
-          if (node.name === "Icosphere") {
-            sphere = node;
-          }
         } else if (node.isLight) {
           node.castShadow = true;
           node.shadow.mapSize.width = 1024;
@@ -88,8 +83,6 @@ function animate() {
   moveCamera();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
-  distanceFromCenter = (Math.abs(camera.position.x) + Math.abs(camera.position.z)) / 2;
-  sphere.position.y = 4 - distanceFromCenter / 2;
 }
 
 function setSceneSize() {
@@ -139,6 +132,5 @@ function lockMouse() {
   context.requestPointerLock = context.requestPointerLock ||
     context.mozRequestPointerLock ||
     context.webkitPointerLockElement;
-
   context.requestPointerLock()
 }
