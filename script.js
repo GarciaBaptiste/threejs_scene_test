@@ -6,12 +6,24 @@ let context;
 let forwardSpeed = 0,
   straffSpeed = 0;
 
+var MODELS = [
+  { name: "scene_test_repeat" }
+  // { name: "Test" }
+];
+
+var UNITS = [{
+  modelName: "Soldier",
+  meshName: "vanguard_Mesh",
+  position: { x: 0, y: 0, z: 0 },
+  scale: 1
+}];
+
 function init() {
   context = document.getElementById('context');
   context.addEventListener('click', lockMouse);
   lockMouse();
   setScene();
-  renderObjects("scene_sphere"); /////////////////////////////////////////   CHANGER NOM DE FICHIER ICI   ////
+  renderObjects("scene_test_repeat"); /////////////////////////////////////////   CHANGER NOM DE FICHIER ICI   ////
   window.addEventListener('resize', windowResized);
   window.addEventListener('mousemove', mouseMoved);
   window.addEventListener('keydown', keyDowned);
@@ -32,6 +44,10 @@ function setScene() {
 
   hlight = new THREE.AmbientLight(0xffffff, .75);
   scene.add(hlight);
+
+  var light = new THREE.PointLight(0xff0000, 1, 100);
+  light.position.set(2, 15, 2);
+  scene.add(light);
 
   scene.background = new THREE.CubeTextureLoader()
     .setPath('models/')
@@ -59,6 +75,7 @@ function renderObjects(sceneName) {
         if (node.isMesh) {
           node.castShadow = true;
           node.receiveShadow = true;
+          console.log(node.position);
         } else if (node.isLight) {
           node.castShadow = true;
           node.shadow.mapSize.width = 1024;
